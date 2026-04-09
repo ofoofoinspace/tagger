@@ -323,7 +323,7 @@
   .chip.sel-fld { background: #EBF5E8; border-color: #8DC882; color: #2A6B20; }
   .chip.sel-atm { background: #F0EBFB; border-color: #B89EE0; color: #5A3A9A; }
   .chip.sel-mat { background: #FBF3E8; border-color: #E8C080; color: #8A5A10; }
-  .chip.sel-ele { background: #FBECEB; border-color: #E89090; color: #9A2A20; }
+  .chip.sel-elm { background: #FBECEB; border-color: #E89090; color: #9A2A20; }
   .chip.sel-sta { background: #F1EFE8; border-color: #B8B8A8; color: #4A4A40; }
   .chip.sel-auth { background: #FBEBF3; border-color: #E890B8; color: #9A205A; }
 
@@ -332,7 +332,7 @@
     .chip.sel-fld { background: #0C2A10; border-color: #2A5A20; color: #70B860; }
     .chip.sel-atm { background: #1A0C38; border-color: #5A3A88; color: #B090D8; }
     .chip.sel-mat { background: #2A1A04; border-color: #6A4A10; color: #D8A040; }
-    .chip.sel-ele { background: #2A0C0C; border-color: #6A2020; color: #D87070; }
+    .chip.sel-elm { background: #2A0C0C; border-color: #6A2020; color: #D87070; }
     .chip.sel-sta { background: #1A1A14; border-color: #4A4A3A; color: #888870; }
     .chip.sel-auth { background: #280C18; border-color: #6A2048; color: #D070A0; }
   }
@@ -879,13 +879,11 @@ JSON FORMAT:
 {"tags":["#tag/one","#tag/two"],"note":"한국어 노트 2-4문장."}`;
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const res = await fetch("/api/analyze", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-calls": "true"
+        "X-Api-Key": apiKey
       },
       body: JSON.stringify({
         model: "claude-haiku-4-5-20251001",
